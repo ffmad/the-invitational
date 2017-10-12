@@ -71,7 +71,9 @@ func index(c echo.Context) error {
 
 // Receive Submission from External Sources
 func submit(c echo.Context) error {
+	fmt.Sprintf("test")
 	if c.QueryParam("token") != config.FormVerificationToken {
+		fmt.Sprintf("test")
 		return c.NoContent(http.StatusUnauthorized)
 	}
 	fmt.Sprintf("Through token verif")
