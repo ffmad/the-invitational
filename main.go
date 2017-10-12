@@ -72,17 +72,16 @@ func index(c echo.Context) error {
 
 // Receive Submission from External Sources
 func submit(c echo.Context) error {
-	fmt.Sprintf("test")
+	fmt.Println("test form submit")
 	if c.QueryParam("token") != config.FormVerificationToken {
-		fmt.Sprintf("test")
+		fmt.Println("fail form submit")
 		return c.NoContent(http.StatusUnauthorized)
 	}
-	fmt.Sprintf("Through token verif")
 	var payload Payload
 	if err := c.Bind(&payload); err != nil {
 		return err
 	}
-	fmt.Sprintf("Pre verif")
+	fmt.Println("success form submit")
 	submissions <- Submission{Data: payload}
 	return c.JSON(http.StatusOK, len(submissions))
 }
