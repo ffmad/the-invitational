@@ -110,6 +110,7 @@ func accept(c echo.Context) error {
 
 // Send Interactive Message to Slack
 func message(uri string, jobs chan Submission) {
+	fmt.Println("test envoi de message")
 	for job := range jobs {
 		if _, ok := job.Data["email"]; !ok {
 			continue
