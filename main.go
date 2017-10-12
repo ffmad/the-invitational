@@ -74,10 +74,12 @@ func submit(c echo.Context) error {
 	if c.QueryParam("token") != config.FormVerificationToken {
 		return c.NoContent(http.StatusUnauthorized)
 	}
+	fmt.Sprintf("Through token verif")
 	var payload Payload
 	if err := c.Bind(&payload); err != nil {
 		return err
 	}
+	fmt.Sprintf("Pre verif")
 	submissions <- Submission{Data: payload}
 	return c.JSON(http.StatusOK, len(submissions))
 }
