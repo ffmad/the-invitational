@@ -66,6 +66,7 @@ func main() {
 }
 
 func index(c echo.Context) error {
+	fmt.Println("test")
 	return c.String(200, "OK")
 }
 
