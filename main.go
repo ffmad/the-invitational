@@ -105,7 +105,7 @@ func accept(c echo.Context) error {
 
 	msg := payload.OriginalMessage
 	msg.Attachments = []slack.Attachment{attachment}
-
+	fmt.Println("test accept 2")
 	return c.JSON(http.StatusOK, msg)
 }
 
@@ -141,6 +141,7 @@ func message(uri string, jobs chan Submission) {
 }
 
 func invite(uri string, token string, jobs chan Invitation) {
+	fmt.Println("test invite")
 	for job := range jobs {
 		values := url.Values{"email": {job.Email}, "token": {token}}
 		response, err := http.PostForm(uri, values)
