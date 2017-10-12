@@ -213,7 +213,7 @@ func prettyKey(key string) string {
 }
 
 func isKeyOmmitable(k string) bool {
-	if k == "page_id" || k == "page_name" || k == "desktopmobile" || k == "page_url" || k == "ip" || k == "variant" {
+	if k == "page_id" || k == "page_name" || k == "desktopmobile" || k == "pageshown" || k == "variationshown" || k == "page_url" || k == "ip" || k == "variant" {
 		return true
 	}
 	return false
