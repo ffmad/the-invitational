@@ -82,7 +82,7 @@ func submit(c echo.Context) error {
 		return err
 	}
 	submissions <- Submission{Data: payload}
-	fmt.Println(echo.Context)
+	fmt.Println(payload)
 	return c.JSON(http.StatusOK, len(submissions))
 }
 
