@@ -81,8 +81,8 @@ func submit(c echo.Context) error {
 	if err := c.Bind(&payload); err != nil {
 		return err
 	}
-	fmt.Println("success form submit")
 	submissions <- Submission{Data: payload}
+	fmt.Println(submissions)
 	return c.JSON(http.StatusOK, len(submissions))
 }
 
