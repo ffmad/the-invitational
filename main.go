@@ -82,7 +82,8 @@ func submit(c echo.Context) error {
 		return err
 	}
 	submissions <- Submission{Data: payload}
-	fmt.Println(submissions)
+	fmt.Println(payload)
+	message(config.SlackWebhookURL, submissions)
 	return c.JSON(http.StatusOK, len(submissions))
 }
 
