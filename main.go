@@ -82,15 +82,16 @@ func submit(c echo.Context) error {
 		return err
 	}
 	submissions <- Submission{Data: payload}
-	fmt.Println(payload)
 	return c.JSON(http.StatusOK, len(submissions))
 }
 
 func accept(c echo.Context) error {
+	fmt.Println("test accept")
 	raw := c.FormValue("payload")
 	var payload slack.AttachmentActionCallback
 	json.Unmarshal([]byte(raw), &payload)
 	if payload.Token != config.SlackVerificationToken {
+		fmt.Println("fail accept")
 		return c.NoContent(http.StatusBadRequest)
 	}
 	action := payload.Actions[0]
