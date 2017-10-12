@@ -130,6 +130,7 @@ func message(uri string, jobs chan Submission) {
 			jobs <- job
 			continue
 		}
+		fmt.Println(body)
 		_, err = http.Post(uri, "application/json", body)
 		if err != nil {
 			fmt.Println(err)
